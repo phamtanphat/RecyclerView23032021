@@ -9,7 +9,7 @@
         app:layout_anchor="@id/cardView"
         app:layout_anchorGravity="left|top"
         android:src="@drawable/ic_status"
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewIcon"
         android:layout_width="20dp"
         android:layout_height="20dp"/>
     <androidx.cardview.widget.CardView
@@ -36,6 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp">
                 <ImageView
+                    android:id="@+id/imageViewFood"
                     android:scaleType="fitXY"
                     android:src="@drawable/hinhkhezone"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -128,7 +129,7 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintLeft_toRightOf="@id/imagePriceTag"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:text="12 -14 Thái Văn Lung, P. Bến Nghé, Quận 1"
+                        android:text="Giảm tất cả 30%"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"/>
 
@@ -152,7 +153,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
