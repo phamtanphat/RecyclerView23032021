@@ -100,4 +100,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             viewSeparator = itemView.findViewById(R.id.viewSeparator);
         }
     }
+
+    public void setOnItemClickRecyclerView(OnItemClickFood onItemClick){
+        mOnItemClickFood = onItemClick;
+    }
 }
