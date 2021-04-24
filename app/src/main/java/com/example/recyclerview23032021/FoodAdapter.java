@@ -20,7 +20,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     private Context mContext;
     private OnItemClickFood mOnItemClickFood;
 
-    public FoodAdapter(List<Food> mListFood) {
+    public FoodAdapter(List<Food> mListFood ) {
         this.mListFood = mListFood;
     }
 

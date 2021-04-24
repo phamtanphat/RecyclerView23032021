@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
         mFoodAdapter = new FoodAdapter(mFoodList);
         mRcvFood.setAdapter(mFoodAdapter);
 
-
-
         mFoodAdapter.setOnItemClickRecyclerView(new OnItemClickFood() {
             @Override
             public void onClick(int position) {
