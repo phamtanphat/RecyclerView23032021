@@ -29,7 +29,28 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
+        Food food = mListFood.get(position);
 
+        if (food.isStatus()){
+            holder.imgIcon.setImageResource(R.drawable.ic_status_online);
+        }else{
+            holder.imgIcon.setImageResource(R.drawable.ic_status_offline);
+        }
+        holder.img.setImageResource(food.getImage());
+        holder.tvName.setText(food.getName());
+        holder.tvLocation.setText(food.getAddress());
+
+        if (food.getSalesOff().length == 1){
+            holder.tvSaleOff.setText(food.getSalesOff()[0]);
+        }else if (food.getSalesOff().length <= 0){
+            holder.tvSaleOff.setVisibility(View.GONE);
+            holder.imgPriceTag.setVisibility(View.GONE);
+            holder.viewSeparator.setVisibility(View.GONE);
+            holder.tvMore.setVisibility(View.GONE);
+        }else{
+            holder.tvSaleOff.setText(food.getSalesOff()[0]);
+            holder.tvMore.setText(String.format("Xem thêm %d ưu đãi khác",food.getSalesOff().length));
+        }
     }
 
     @Override
@@ -42,8 +63,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     class FoodViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView img,imgIcon;
+        ImageView img,imgIcon,imgPriceTag;
         TextView tvName,tvLocation,tvSaleOff ,tvMore;
+        View viewSeparator;
 
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +76,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             tvLocation = itemView.findViewById(R.id.textViewLocationFood);
             tvSaleOff = itemView.findViewById(R.id.textViewSaleOff);
             tvMore = itemView.findViewById(R.id.textViewViewMore);
+            imgPriceTag = itemView.findViewWithTag(R.id.imagePriceTag);
+            viewSeparator = itemView.findViewById(R.id.viewSeparator);
         }
     }
 }

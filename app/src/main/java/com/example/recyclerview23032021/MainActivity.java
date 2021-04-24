@@ -27,8 +27,38 @@ public class MainActivity extends AppCompatActivity {
                         "Ăn trưa - Ưu đãi",
                         "Cả ngày - Tặng 01 phần Bánh Nướng",
                         "Cả ngày - Đặt bàn"
-                }
-                ));
-
+                }));
+        mFoodList.add(new Food(
+                true,
+                R.drawable.hinhmoobeefsteak,
+                "Moo Beef Steak - Ngô Đức Kế",
+                "35 - 37 Ngô Đức Kế, P. Bến Nghé, Quận 1",
+                new String[] {
+                        "Cả ngày - Giảm 50%",
+                        "Cả ngày - T3 - CN: Giảm 15%"
+                }));
+        mFoodList.add(new Food(
+                true,
+                R.drawable.hinhkhezone,
+                "Khè Zone",
+                "1 Đồng Nai, P. 15, Quận 10",
+                new String[] {
+                        "Cả ngày - Giảm 30%"
+                }));
+        mFoodList.add(new Food(
+                true,
+                R.drawable.hinhsaigoncafe,
+                "Saigon Cafe - Sheraton Saigon Hotel & Towers",
+                "Tầng 1 Sheraton Saigon Hotel & Towers, 88 Đồng Khởi, P. Bến Nghé, Quận 1",
+                new String[] {
+                        "Ăn tối - T4 - CN: Giảm 15%",
+                        "Ăn tối - T4 - CN: Giảm 10%"
+                }));
+        mFoodList.add(new Food(
+                true,
+                R.drawable.hinhmocrieuvanuong,
+                "Mộc - Riêu & Nướng - Võ Văn Kiệt",
+                "318 - 320 Võ Văn Kiệt (Gần Ngã 3 Đề Thám), P. Cô Giang, Quận 1",
+                new String[] {}));
     }
 }

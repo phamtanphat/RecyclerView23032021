@@ -6,9 +6,10 @@
     android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
+        android:elevation="10dp"
         app:layout_anchor="@id/cardView"
         app:layout_anchorGravity="left|top"
-        android:src="@drawable/ic_status"
+        android:src="@drawable/ic_status_online"
         android:id="@+id/imageViewIcon"
         android:layout_width="20dp"
         android:layout_height="20dp"/>
@@ -153,4 +154,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
