@@ -1,6 +1,7 @@
 package com.example.recyclerview23032021;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -10,13 +11,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     List<Food> mFoodList;
+    RecyclerView mRcvFood;
+    FoodAdapter mFoodAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mFoodList = new ArrayList<>();
-
         mFoodList.add(new Food(
                 true,
                 R.drawable.hinhplaydumsum,
@@ -60,5 +62,12 @@ public class MainActivity extends AppCompatActivity {
                 "Mộc - Riêu & Nướng - Võ Văn Kiệt",
                 "318 - 320 Võ Văn Kiệt (Gần Ngã 3 Đề Thám), P. Cô Giang, Quận 1",
                 new String[] {}));
+        mRcvFood = findViewById(R.id.recyclerViewFood);
+        mFoodAdapter = new FoodAdapter(mFoodList);
+        mRcvFood.setAdapter(mFoodAdapter);
+
+
+
+
     }
 }

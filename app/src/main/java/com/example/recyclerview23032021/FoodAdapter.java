@@ -76,7 +76,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             tvLocation = itemView.findViewById(R.id.textViewLocationFood);
             tvSaleOff = itemView.findViewById(R.id.textViewSaleOff);
             tvMore = itemView.findViewById(R.id.textViewViewMore);
-            imgPriceTag = itemView.findViewWithTag(R.id.imagePriceTag);
+            imgPriceTag = itemView.findViewById(R.id.imagePriceTag);
             viewSeparator = itemView.findViewById(R.id.viewSeparator);
         }
     }
