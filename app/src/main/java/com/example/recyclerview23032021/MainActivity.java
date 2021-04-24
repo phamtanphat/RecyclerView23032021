@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         mFoodList = new ArrayList<>();
         mFoodList.add(new Food(
+                1,
                 true,
                 R.drawable.hinhplaydumsum,
                 "Play Dim Sum - Thái Văn Lung",
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                         "Cả ngày - Đặt bàn"
                 }));
         mFoodList.add(new Food(
+                2,
                 true,
                 R.drawable.hinhmoobeefsteak,
                 "Moo Beef Steak - Ngô Đức Kế",
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         "Cả ngày - T3 - CN: Giảm 15%"
                 }));
         mFoodList.add(new Food(
+                3,
                 true,
                 R.drawable.hinhkhezone,
                 "Khè Zone",
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         "Cả ngày - Giảm 30%"
                 }));
         mFoodList.add(new Food(
+                4,
                 true,
                 R.drawable.hinhsaigoncafe,
                 "Saigon Cafe - Sheraton Saigon Hotel & Towers",
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         "Ăn tối - T4 - CN: Giảm 10%"
                 }));
         mFoodList.add(new Food(
+                5,
                 true,
                 R.drawable.hinhmocrieuvanuong,
                 "Mộc - Riêu & Nướng - Võ Văn Kiệt",
@@ -70,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         mFoodAdapter.setOnItemClickRecyclerView(new OnItemClickFood() {
             @Override
             public void onClick(int position) {
-                Toast.makeText(MainActivity.this, mFoodList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                mFoodList.remove(position);
+                mFoodAdapter.notifyItemRemoved(position);
             }
         });
 

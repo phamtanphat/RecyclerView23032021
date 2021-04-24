@@ -6,11 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.chauthai.swipereveallayout.SwipeRevealLayout;
+import com.chauthai.swipereveallayout.ViewBinderHelper;
 
 import java.util.List;
 
@@ -19,6 +23,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     private List<Food> mListFood;
     private Context mContext;
     private OnItemClickFood mOnItemClickFood;
+    private final ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
 
     public FoodAdapter(List<Food> mListFood ) {
         this.mListFood = mListFood;
@@ -35,7 +40,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
-        Log.d("BBB","bindview");
         Food food = mListFood.get(position);
 
         if (food.isStatus()){
@@ -61,16 +65,18 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         // Xử lý tuần từ
         // logic 1 phải mất 3 s để chạy sẽ gọi callback
         // logic 2 sẽ start check callback
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        viewBinderHelper.bind(holder.swipeRevealLayout,position+ "");
+        holder.linearLayoutDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // call back function
                 if (mOnItemClickFood != null){
-                    mOnItemClickFood.onClick(position);
+                    mOnItemClickFood.onClick(holder.getAdapterPosition());
                 }
             }
         });
+
+
     }
 
     @Override
@@ -86,11 +92,15 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         ImageView img,imgIcon,imgPriceTag;
         TextView tvName,tvLocation,tvSaleOff ,tvMore;
         View viewSeparator;
+        LinearLayout linearLayoutDelete;
+        SwipeRevealLayout swipeRevealLayout;
 
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
 
             img = itemView.findViewById(R.id.imageViewFood);
+            swipeRevealLayout = itemView.findViewById(R.id.swipeLayout);
+            linearLayoutDelete = itemView.findViewById(R.id.linearDelete);
             imgIcon = itemView.findViewById(R.id.imageViewIcon);
             tvName = itemView.findViewById(R.id.textViewNameFood);
             tvLocation = itemView.findViewById(R.id.textViewLocationFood);

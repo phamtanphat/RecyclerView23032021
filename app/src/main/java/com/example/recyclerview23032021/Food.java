@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Food {
+    private int id;
     private boolean status;
     private int image;
     private String name;
@@ -11,12 +12,21 @@ public class Food {
     private String[] salesOff;
 
 //    alt + inset
-    public Food(boolean status, int image, String name, String address, String[] salesOff) {
+    public Food(int id ,boolean status, int image, String name, String address, String[] salesOff) {
+        this.id = id;
         this.status = status;
         this.image = image;
         this.name = name;
         this.address = address;
         this.salesOff = salesOff;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isStatus() {
