@@ -1,10 +1,13 @@
 package com.example.recyclerview23032021;
 
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +17,8 @@ import java.util.List;
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder>{
 
     private List<Food> mListFood;
+    private Context mContext;
+    private OnItemClickFood mOnItemClickFood;
 
     public FoodAdapter(List<Food> mListFood) {
         this.mListFood = mListFood;
@@ -22,6 +27,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     @NonNull
     @Override
     public FoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        mContext = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View v = layoutInflater.inflate(R.layout.layout_item_food,parent,false);
         return new FoodViewHolder(v);
@@ -29,6 +35,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
+        Log.d("BBB","bindview");
         Food food = mListFood.get(position);
 
         if (food.isStatus()){
@@ -51,6 +58,19 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             holder.tvSaleOff.setText(food.getSalesOff()[0]);
             holder.tvMore.setText(String.format("Xem thêm %d ưu đãi khác",food.getSalesOff().length));
         }
+        // Xử lý tuần từ
+        // logic 1 phải mất 3 s để chạy sẽ gọi callback
+        // logic 2 sẽ start check callback
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // call back function
+                if (mOnItemClickFood != null){
+                    mOnItemClickFood.onClick(position);
+                }
+            }
+        });
     }
 
     @Override
